@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>УНИВЕРСАЛ ПРОДУКТ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Mobile top bar (hamburger) -->
+  <div class="mobile-topbar">
+    <button class="hamburger" id="hamburgerBtn" aria-label="Открыть меню">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="mainHeader">
+    <div class="header-container">
+      <div class="header-left">
+        <div class="header-logo-box">
+          <img src="assets/logo.jpg" alt="ООО Универсал Продукт">
+        </div>
+      </div>
+      <div class="header-center">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="#about" data-i18n="nav-about">О Компании</a></li>
+            <li><a href="#service" data-i18n="nav-products">Наши продукты</a></li>
+            <li><a href="#how" data-i18n="nav-how">Как мы работаем</a></li>
+            <li><a href="#form" data-i18n="nav-contact">Свяжитесь с нами</a></li>
+            <li><a href="#contacts" data-i18n="nav-contacts">Контакты</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="header-right">
+        <div class="header-contact-text">
+          <p><strong>+7 903 160 70 01</strong></p>
+          <p>info@universal-pack.ru</p>
+        </div>
+        <div class="header-socials">
+          <a href="https://wa.me/79031607001"><svg width="30" height="30" viewBox="0 0 100 100" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M50 100C77.6142 100 100 77.6142 100 50C100 22.3858 77.6142 0 50 0C22.3858 0 0 22.3858 0 50C0 77.6142 22.3858 100 50 100ZM69.7626 28.9928C64.6172 23.841 57.7739 21.0027 50.4832 21C35.4616 21 23.2346 33.2252 23.2292 48.2522C23.2274 53.0557 24.4823 57.7446 26.8668 61.8769L23 76L37.4477 72.2105C41.4282 74.3822 45.9107 75.5262 50.4714 75.528H50.4823C65.5029 75.528 77.7299 63.301 77.7363 48.2749C77.7408 40.9915 74.9089 34.1446 69.7626 28.9928ZM62.9086 53.9588C62.2274 53.6178 58.8799 51.9708 58.2551 51.7435C57.6313 51.5161 57.1766 51.4024 56.7228 52.0845C56.269 52.7666 54.964 54.2998 54.5666 54.7545C54.1692 55.2092 53.7718 55.2656 53.0915 54.9246C52.9802 54.8688 52.8283 54.803 52.6409 54.7217C51.6819 54.3057 49.7905 53.4855 47.6151 51.5443C45.5907 49.7382 44.2239 47.5084 43.8265 46.8272C43.4291 46.1452 43.7837 45.7769 44.1248 45.4376C44.3292 45.2338 44.564 44.9478 44.7987 44.662C44.9157 44.5194 45.0328 44.3768 45.146 44.2445C45.4345 43.9075 45.56 43.6516 45.7302 43.3049C45.7607 43.2427 45.7926 43.1776 45.8272 43.1087C46.0545 42.654 45.9409 42.2565 45.7708 41.9155C45.6572 41.6877 45.0118 40.1167 44.4265 38.6923C44.1355 37.984 43.8594 37.3119 43.671 36.8592C43.1828 35.687 42.6883 35.69 42.2913 35.6924C42.2386 35.6928 42.1876 35.6931 42.1386 35.6906C41.7421 35.6706 41.2874 35.667 40.8336 35.667C40.3798 35.667 39.6423 35.837 39.0175 36.5191C38.9773 36.5631 38.9323 36.6111 38.8834 36.6633C38.1738 37.4209 36.634 39.0648 36.634 42.2002C36.634 45.544 39.062 48.7748 39.4124 49.2411L39.415 49.2444C39.4371 49.274 39.4767 49.3309 39.5333 49.4121C40.3462 50.5782 44.6615 56.7691 51.0481 59.5271C52.6732 60.2291 53.9409 60.6475 54.9303 60.9612C56.5618 61.4796 58.046 61.4068 59.22 61.2313C60.5286 61.0358 63.2487 59.5844 63.8161 57.9938C64.3836 56.4033 64.3836 55.0392 64.2136 54.7554C64.0764 54.5258 63.7545 54.3701 63.2776 54.1395C63.1633 54.0843 63.0401 54.0247 62.9086 53.9588Z" fill="#000"></path></svg></a>
+          <a href="https://t.me/universalexporttm"><svg width="30" height="30" viewBox="0 0 100 100" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M50 100c27.614 0 50-22.386 50-50S77.614 0 50 0 0 22.386 0 50s22.386 50 50 50Zm21.977-68.056c.386-4.38-4.24-2.576-4.24-2.576-3.415 1.414-6.937 2.85-10.497 4.302-11.04 4.503-22.444 9.155-32.159 13.734-5.268 1.932-2.184 3.864-2.184 3.864l8.351 2.577c3.855 1.16 5.91-.129 5.91-.129l17.988-12.238c6.424-4.38 4.882-.773 3.34.773l-13.49 12.882c-2.056 1.804-1.028 3.35-.129 4.123 2.55 2.249 8.82 6.364 11.557 8.16.712.467 1.185.778 1.292.858.642.515 4.111 2.834 6.424 2.319 2.313-.516 2.57-3.479 2.57-3.479l3.083-20.226c.462-3.511.993-6.886 1.417-9.582.4-2.546.705-4.485.767-5.362Z" fill="#000"></path></svg></a>
+        </div>
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="ru">RU</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="tr">TR</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+        <div class="hero-slider">
+          <div class="hero-slide active" style="background-image: url('assets/vpt3.jpg');"></div>
+          <div class="hero-slide" style="background-image: url('assets/vpt4.jpg');"></div>
+          <div class="hero-slide" style="background-image: url('assets/top_slides_02-scaled.jpg');"></div>
+          <button class="hero-arrow hero-arrow-left" aria-label="Предыдущий слайд">&#8592;</button>
+          <button class="hero-arrow hero-arrow-right" aria-label="Следующий слайд">&#8594;</button>
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <div class="hero-text-wrapper">
+              <h1 class="hero-title" data-i18n="hero-title">Полимерные материалы из Туркменистана</h1>
+              <p class="hero-descr hero-descr-small" data-i18n="hero-descr">Компания ООО «Универсал продукт» поставляет полипропиленовую и полиэтиленовую продукцию для вашего бизнеса.</p>
+              <a href="#about" class="hero-btn" data-i18n="hero-btn">Узнать больше</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+  <!-- Products -->
+  <section class="service" id="service">
+    <div class="section-container">
+      <h2 class="section-title text-center" style="margin-bottom: 105px;" data-i18n="title-products"><br><br>Наши продукты</h2>
+      
+      <div class="products-row">
+        <div class="product-item">
+          <div class="product-img-wrap">
+            <img src="assets/--5301000--PhotoRoom.png" alt="Полипропиленовые мешки">
+          </div>
+          <div class="product-info">
+            <h3 class="product-title" data-i18n="prod-bags">Полипропиленовые мешки</h3>
+            <p class="product-descr" data-i18n="prod-bags-desc">Мешки для всех видов сухих сыпучих продуктов</p>
+            <a href="/" class="product-btn">Подробнее</a>
+          </div>
+        </div>
+        
+        <div class="product-item">
+          <div class="product-img-wrap">
+            <img src="assets/1-4_stropnie_big_begi.png" alt="Мягкий контейнер (БИГ-БЭГ)">
+          </div>
+          <div class="product-info">
+            <h3 class="product-title" data-i18n="prod-bigbags">Мягкий контейнер (БИГ-БЭГ)</h3>
+            <p class="product-descr" data-i18n="prod-bigbags-desc">Мешки для всех видов сухих сыпучих продуктов</p>
+            <a href="/" class="product-btn">Подробнее</a>
+          </div>
+        </div>
+        
+        <div class="product-item">
+          <div class="product-img-wrap">
+            <img src="assets/0a64ab87-1d6b-40a2-93b5-3572f62a5391.png" alt="Мультифиламентные нити">
+          </div>
+          <div class="product-info">
+            <h3 class="product-title" data-i18n="prod-threads">Мультифиламентные нити</h3>
+            <p class="product-descr" data-i18n="prod-threads-desc">Прошивочные нити</p>
+            <a href="/" class="product-btn">Подробнее</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="products-row">
+        <div class="product-item">
+          <div class="product-img-wrap">
+            <img src="assets/aa1e0534-3eed-4e51-b83c-49b500beb766.jpg" alt="Пологи и Тенты">
+          </div>
+          <div class="product-info">
+            <h3 class="product-title" data-i18n="prod-tents">Пологи и Тенты</h3>
+            <p class="product-descr" data-i18n="prod-tents-desc">Защитные укрывные материалы из полипропилена</p>
+            <a href="/" class="product-btn">Подробнее</a>
+          </div>
+        </div>
+        
+        <div class="product-item">
+          <div class="product-img-wrap">
+            <img src="assets/Hbcd9cbaf9ae749bdab7db572db78abe09.jpg" alt="Нетканый материал (Спанбонд)">
+          </div>
+          <div class="product-info">
+            <h3 class="product-title" data-i18n="prod-span">Нетканый материал (Спанбонд)</h3>
+            <p class="product-descr" data-i18n="prod-span-desc">Нетканый материал для медицинских, Агро промышленных и упаковочных целей</p>
+            <a href="/" class="product-btn">Подробнее</a>
+          </div>
+        </div>
+        
+        <div class="product-item">
+          <div class="product-img-wrap">
+            <img src="assets/plenka_rukav_pvd-300x300.png" alt="Полиэтиленовая пленка">
+          </div>
+          <div class="product-info">
+            <h3 class="product-title" data-i18n="prod-film">Полиэтиленовая пленка</h3>
+            <p class="product-descr" data-i18n="prod-film-desc">Для Сельскохозяйственных, Строительных, Бытовых, Промышленных целей</p>
+            <a href="/" class="product-btn">Подробнее</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="products-row">
+        <div class="product-item product-slider-item">
+          <div class="product-slider">
+            <div class="product-slide active">
+              <img src="assets/322_original.png" alt="Вкладыши Полиэтиленовые для мешков и Биг-Бэгов">
+            </div>
+            <div class="product-slide">
+              <img src="assets/poly-bag-2.jpg" alt="Вкладыши Полиэтиленовые для мешков и Биг-Бэгов 2">
+            </div>
+            <div class="product-slide">
+              <img src="assets/poly-bag-3.jpg" alt="Вкладыши Полиэтиленовые для мешков и Биг-Бэгов 3">
+            </div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-title" data-i18n="prod-polybag">Вкладыши Полиэтиленовые для мешков и Биг-Бэгов</h3>
+            <p class="product-descr product-descr-small" data-i18n="prod-polybag-desc">Полиэтиленовые вкладыши для различных видов мешков и биг-бэгов. Защищают содержимое от влаги и загрязнений.</p>
+            <a href="/" class="product-btn">Подробнее</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- How we work -->
+  <section class="how" id="how">
+    <div class="section-container">
+      <h2 class="section-title text-center" data-i18n="title-how">Как мы работаем</h2>
+      
+      <div class="how-row">
+        <div class="how-item">
+          <div class="how-icon-wrapper">
+            <div class="how-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill-rule="evenodd"><g class="t-group-origins"><path d="M51.651 52.942c-18.811 0-34.115 15.303-34.115 34.114a1.5 1.5 0 0 0 1.5 1.5h65.223a1.5 1.5 0 0 0 1.5-1.5c-.001-18.811-15.301-34.114-34.108-34.114zm18.238 32.614H33.771V61.612a31.081 31.081 0 0 1 7.658-3.941v12.937a1.5 1.5 0 0 0 1.5 1.5h17.525a1.5 1.5 0 0 0 1.5-1.5V57.699a31.04 31.04 0 0 1 7.96 4.188 1.507 1.507 0 0 0-.026.253v23.416h.001zM58.954 56.813v12.294H44.429V56.794a31.066 31.066 0 0 1 14.525.019zm-28.183 7.204v21.539h-10.2c.407-8.526 4.266-16.156 10.2-21.539zm42.118 21.539V64.35c5.727 5.362 9.436 12.856 9.833 21.206h-9.833zm-21.81-35.998c10.844 0 19.666-8.819 19.666-19.658 0-10.844-8.822-19.666-19.666-19.666-10.845 0-19.667 8.822-19.667 19.666-.001 10.84 8.822 19.658 19.667 19.658zm0-36.324c7.01 0 13.012 4.357 15.469 10.5-2.642-1.182-6.967-3.435-9.736-4.944a1.504 1.504 0 0 0-1.359-.039c-.067.032-6.738 3.187-11.071 4.993l-.412.172c-3.228 1.349-5.32 2.22-9.225 2.669 1.541-7.606 8.279-13.351 16.334-13.351zM34.425 29.637c4.759-.47 7.167-1.475 10.702-2.953l.41-.171c3.569-1.488 8.675-3.865 10.511-4.726 2.282 1.23 9.031 4.815 11.478 5.54.131.841.219 1.695.219 2.572 0 9.186-7.476 16.658-16.666 16.658-9.19 0-16.667-7.473-16.667-16.658-.001-.087.011-.173.013-.262z" stroke-width="0" stroke="#0fa7d9" fill="#0fa7d9"></path></g></svg>
+            </div>
+          </div>
+          <div class="how-title" data-i18n="how-1-title">Оформление запроса</div>
+          <div class="how-descr" data-i18n="how-1-desc">Для получение Коммерческого предложения, заполните заявку или свяжитесь с нами</div>
+        </div>
+
+        <div class="how-item">
+          <div class="how-icon-wrapper">
+            <div class="how-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill-rule="evenodd"><g class="t-group-origins"><path d="M84.395 7.881H15.959a1.5 1.5 0 0 0-1.5 1.5v81.591a1.5 1.5 0 0 0 1.5 1.5h68.437a1.5 1.5 0 0 0 1.5-1.5V9.381a1.501 1.501 0 0 0-1.501-1.5zm-1.5 81.59H17.459v-78.59h65.437l-.001 78.59z" stroke-width="0" stroke="#0fa7d9" fill="#0fa7d9"></path><path d="M25.254 40.175h50.3a1.5 1.5 0 0 0 1.5-1.5V18.216a1.5 1.5 0 0 0-1.5-1.5h-50.3a1.5 1.5 0 0 0-1.5 1.5v20.458a1.5 1.5 0 0 0 1.5 1.501zm1.5-20.458h47.3v17.458h-47.3V19.717zm9.214 27.759H25.782a1.5 1.5 0 0 0-1.5 1.5v10.187a1.5 1.5 0 0 0 1.5 1.5h10.186a1.5 1.5 0 0 0 1.5-1.5V48.976a1.5 1.5 0 0 0-1.5-1.5zm-1.5 10.187h-7.186v-7.187h7.186v7.187zm1.5 9.551H25.782a1.5 1.5 0 0 0-1.5 1.5V78.9a1.5 1.5 0 0 0 1.5 1.5h10.186a1.5 1.5 0 0 0 1.5-1.5V68.714a1.5 1.5 0 0 0-1.5-1.5zm-1.5 10.186h-7.186v-7.187h7.186V77.4zm40.557-29.924H64.84a1.5 1.5 0 0 0-1.5 1.5v10.187a1.5 1.5 0 0 0 1.5 1.5h10.186a1.5 1.5 0 0 0 1.5-1.5V48.976a1.501 1.501 0 0 0-1.501-1.5zm-1.5 10.187H66.34v-7.187h7.186l-.001 7.187zm1.5 9.551H64.84a1.5 1.5 0 0 0-1.5 1.5V78.9a1.5 1.5 0 0 0 1.5 1.5h10.186a1.5 1.5 0 0 0 1.5-1.5V68.714a1.5 1.5 0 0 0-1.501-1.5zm-1.5 10.186H66.34v-7.187h7.186l-.001 7.187zM55.831 47.141H45.648a1.5 1.5 0 0 0-1.5 1.5v10.187a1.5 1.5 0 0 0 1.5 1.5h10.183a1.5 1.5 0 0 0 1.5-1.5V48.641a1.5 1.5 0 0 0-1.5-1.5zm-1.5 10.187h-7.183v-7.187h7.183v7.187zm1.5 9.55H45.648a1.5 1.5 0 0 0-1.5 1.5v10.188a1.5 1.5 0 0 0 1.5 1.5h10.183a1.5 1.5 0 0 0 1.5-1.5V68.378a1.5 1.5 0 0 0-1.5-1.5zm-1.5 10.187h-7.183v-7.188h7.183v7.188z" stroke-width="0" stroke="#0fa7d9" fill="#0fa7d9"></path></g></svg>
+            </div>
+          </div>
+          <div class="how-title" data-i18n="how-2-title">Расчет</div>
+          <div class="how-descr"><span style="font-size: 16px; line-height: 14px;" data-i18n="how-2-desc">Мы подготовим для Вас коммерческого предложения по запросу</span></div>
+        </div>
+
+        <div class="how-item">
+          <div class="how-icon-wrapper">
+            <div class="how-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill-rule="evenodd"><g class="t-group-origins"><path d="M80.5 11H61V7.5A1.5 1.5 0 0 0 59.5 6h-18A1.5 1.5 0 0 0 40 7.5V11H21.5a1.5 1.5 0 0 0-1.5 1.5v72a1.5 1.5 0 0 0 1.5 1.5h59a1.5 1.5 0 0 0 1.5-1.5v-72a1.5 1.5 0 0 0-1.5-1.5ZM43 9h15v6H43zm36 74H23V14h17v2.5a1.5 1.5 0 0 0 1.5 1.5h18a1.5 1.5 0 0 0 1.5-1.5V14h18Z" stroke-width="0" stroke="#0fa7d9" fill="#0fa7d9"></path><path d="M33.5 34h-5a1.5 1.5 0 0 0 0 3h5a1.5 1.5 0 0 0 0-3Zm7 0a1.5 1.5 0 0 0 0 3h33a1.5 1.5 0 0 0 0-3Zm-7 13h-5a1.5 1.5 0 0 0 0 3h5a1.5 1.5 0 0 0 0-3Zm40 0h-33a1.5 1.5 0 0 0 0 3h33a1.5 1.5 0 0 0 0-3Zm-40 13h-5a1.5 1.5 0 0 0 0 3h5a1.5 1.5 0 0 0 0-3Zm40 0h-33a1.5 1.5 0 0 0 0 3h33a1.5 1.5 0 0 0 0-3Z" stroke-width="0" stroke="#0fa7d9" fill="#0fa7d9"></path></g></svg>
+            </div>
+          </div>
+          <div class="how-title" data-i18n="how-3-title">Заключение Договора</div>
+          <div class="how-descr" data-i18n="how-3-desc">Согласование условий сотрудничетсва и подписание договора</div>
+        </div>
+
+        <div class="how-item">
+          <div class="how-icon-wrapper">
+            <div class="how-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill-rule="evenodd"><g class="t-group-origins"><path d="M93.5 53H86V40.5a1.5 1.5 0 0 0-1.5-1.5H61V26.5a1.5 1.5 0 0 0-1.5-1.5h-51A1.5 1.5 0 0 0 7 26.5v47A1.5 1.5 0 0 0 8.5 75h11.42a7.65 7.65 0 0 0 15.21 0h33.55a7.66 7.66 0 0 0 15.23 0h9.59a1.5 1.5 0 0 0 1.5-1.5v-19a1.5 1.5 0 0 0-1.5-1.5Zm-66 25.84a4.66 4.66 0 1 1 4.64-4.65 4.66 4.66 0 0 1-4.6 4.65Zm0-12.31A7.67 7.67 0 0 0 20.2 72H10V28h48v44H34.86a7.66 7.66 0 0 0-7.32-5.47Zm48.79 12.31a4.66 4.66 0 1 1 4.66-4.65 4.66 4.66 0 0 1-4.66 4.65ZM92 72h-8.37A7.65 7.65 0 0 0 69 72h-8V42h22v12.5a1.5 1.5 0 0 0 1.5 1.5H92Z" stroke-width="0" stroke="#0fa7d9" fill="#0fa7d9"></path><path d="M16.5 43H47l-5 5a1.5 1.5 0 1 0 2.12 2.12l6.73-6.73a1.5 1.5 0 0 0 0-2.12l-6.73-6.73A1.5 1.5 0 0 0 42 36.7l3.3 3.3H16.5a1.5 1.5 0 0 0 0 3ZM49 57.5a1.5 1.5 0 0 0-1.5-1.5H17.1l4.9-4.89A1.5 1.5 0 1 0 19.86 49l-6.73 6.73a1.5 1.5 0 0 0 0 2.12l6.73 6.73A1.5 1.5 0 0 0 22 62.45L18.54 59h29A1.5 1.5 0 0 0 49 57.5Z" stroke-width="0" stroke="#0fa7d9" fill="#0fa7d9"></path></g></svg>
+            </div>
+          </div>
+          <div class="how-title" data-i18n="how-4-title">Поставка товара</div>
+          <div class="how-descr" data-i18n="how-4-desc">Доставка товара согласно договору</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="section-container">
+      <h2 class="section-title text-center" data-i18n="title-about">О компании <br>ООО "Универсал Продукт"</h2>
+      
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span class="accordion-title" data-i18n="acc-1-title">Наша миссия</span>
+            <span class="accordion-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24"><g stroke="#222" stroke-width="1" fill="none"><path d="M1 12h22"/><path d="M12 1v22"/></g></svg>
+            </span>
+          </button>
+          <div class="accordion-content">
+            <p data-i18n="acc-1-desc">Мы способствуем развитию торговых отношений между Россией и Туркменистаном, обеспечивая поставки качественной продукции.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span class="accordion-title" data-i18n="acc-2-title">Ценности компании</span>
+            <span class="accordion-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24"><g stroke="#222" stroke-width="1" fill="none"><path d="M1 12h22"/><path d="M12 1v22"/></g></svg>
+            </span>
+          </button>
+          <div class="accordion-content">
+            <p data-i18n="acc-2-desc">Честность, ответственность и профессионализм — наши главные ценности.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span class="accordion-title" data-i18n="acc-3-title">Роль на рынке</span>
+            <span class="accordion-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24"><g stroke="#222" stroke-width="1" fill="none"><path d="M1 12h22"/><path d="M12 1v22"/></g></svg>
+            </span>
+          </button>
+          <div class="accordion-content">
+            <p data-i18n="acc-3-desc">Мы являемся связующим звеном между Туркменскими производителями и рынком РФ, обеспечивая поставки полипропиленовой и полиэтиленовой продукции высокого качества.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span class="accordion-title" data-i18n="acc-4-title">Наша деятельность</span>
+            <span class="accordion-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24"><g stroke="#222" stroke-width="1" fill="none"><path d="M1 12h22"/><path d="M12 1v22"/></g></svg>
+            </span>
+          </button>
+          <div class="accordion-content">
+            <p data-i18n="acc-4-desc">Мы занимаемся дистрибуцией продукции, обеспечивая её доступность и качество для потребителей на территории Российской Федерации.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span class="accordion-title" data-i18n="acc-5-title">Наша цель</span>
+            <span class="accordion-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24"><g stroke="#222" stroke-width="1" fill="none"><path d="M1 12h22"/><path d="M12 1v22"/></g></svg>
+            </span>
+          </button>
+          <div class="accordion-content">
+            <p data-i18n="acc-5-desc">Наша цель — укрепить позиции туркменских производителей на российском рынке и обеспечить стабильные поставки качественной продукции.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Form -->
+  <section class="form-section" id="form">
+    <div class="form-overlay"></div>
+    <div class="section-container form-container">
+      <div class="form-wrapper text-center">
+        <h2 class="form-title" data-i18n="title-form">Свяжитесь с нами</h2>
+        <p class="form-descr" data-i18n="form-desc">Пожалуйста, заполните форму для связи с нашей компанией.</p>
+        <form class="contact-form" action="send.php" method="POST">
+          <div class="input-group">
+            <input type="text" name="name" placeholder="Имя" data-i18n="form-name" required>
+          </div>
+          <div class="input-group">
+            <input type="email" name="email" placeholder="Ваш e-mail" data-i18n="form-email" required>
+          </div>
+          <div class="input-group input-group-flag">
+            <div class="custom-select" id="countrySelect">
+              <div class="select-selected"><span class="flag">🇺🇸</span><span class="arrow">▼</span></div>
+              <div class="select-items select-hide">
+              </div>
+            </div>
+            <input type="tel" name="phone" id="phoneInput" placeholder="+1 (000) 000-0000" style="padding-left: 80px;" required>
+          </div>
+          <button type="submit" class="submit-btn w-100" data-i18n="form-submit">Отправить</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacts -->
+  <footer class="footer" id="contacts">
+    <div class="section-container">
+      <div class="footer-content">
+        <p><strong data-i18n="footer-phone"> Телефон: </strong></p>
+        <p><strong>+7 903 160 70 01 </strong></p>
+        <p><strong>+7 960 059 61 70 </strong></p>
+        <p><strong>+7 903 642 16 86 </strong></p>
+        <br>
+        <p><strong data-i18n="footer-email">Email:</strong></p>
+        <p><strong>dowlet@universal-pack.ru</strong></p>
+        <p><strong>shato@universal-pack.ru</strong></p>
+        <p><strong>shohrat@universal-pack.ru</strong></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="lang.js"></script>
+  <script src="countries.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
