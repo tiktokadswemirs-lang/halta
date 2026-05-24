@@ -209,7 +209,46 @@ document.addEventListener('DOMContentLoaded', () => {
   if (successOverlay) successOverlay.addEventListener('click', closeSuccessModal);
 
   if (contactForm) {
-    const FORM_EMAIL = 'tiktokadswemirs@gmail.com';
+    const WEB3FORMS_ACCESS_KEY =
+      (window.FORM_CONFIG && window.FORM_CONFIG.web3formsAccessKey) || '';
+
+    async function submitViaWeb3Forms(formData) {
+      if (!WEB3FORMS_ACCESS_KEY) {
+        return {
+          success: false,
+          message:
+            'Нужен ключ Web3Forms.\n\n' +
+            '1. Откройте https://web3forms.com\n' +
+            '2. Введите email tiktokadswemirs@gmail.com\n' +
+            '3. Скопируйте Access Key в файл form-config.js\n' +
+            '4. Загрузите изменения на GitHub'
+        };
+      }
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          name: formData.get('name'),
+          email: formData.get('email'),
+          phone: formData.get('phone'),
+          phone_intl: formData.get('phone_intl'),
+          subject: 'Новая заявка с сайта Universal Pack'
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        return { success: true, message: 'Данные успешно отправлены.' };
+      }
+
+      return {
+        success: false,
+        message: data.message || 'Ошибка Web3Forms. Проверьте ключ в form-config.js'
+      };
+    }
 
     async function submitContactForm(form) {
       const phoneIntlInput = document.getElementById('phoneIntl');
@@ -223,7 +262,6 @@ document.addEventListener('DOMContentLoaded', () => {
         location.hostname.endsWith('.github.dev') ||
         location.protocol === 'file:';
 
-      // PHP-сервер (OpenServer, хостинг с PHP)
       if (!isStaticHost) {
         try {
           const response = await fetch('send.php', { method: 'POST', body: formData });
@@ -232,37 +270,11 @@ document.addEventListener('DOMContentLoaded', () => {
             return data;
           }
         } catch (e) {
-          /* fallback ниже */
+          /* fallback */
         }
       }
 
-      // GitHub Pages и статика — FormSubmit (без PHP)
-      const response = await fetch('https://formsubmit.co/ajax/' + FORM_EMAIL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name: formData.get('name'),
-          email: formData.get('email'),
-          phone: formData.get('phone'),
-          phone_intl: formData.get('phone_intl'),
-          _subject: 'Новая заявка с сайта Universal Pack',
-          _template: 'table',
-          _captcha: 'false'
-        })
-      });
-
-      if (response.ok) {
-        return { success: true, message: 'Данные успешно отправлены.' };
-      }
-
-      const data = await response.json().catch(function () { return {}; });
-      return {
-        success: false,
-        message: data.message || 'Ошибка при отправке. Проверьте почту ' + FORM_EMAIL + ' — FormSubmit мог запросить подтверждение.'
-      };
+      return submitViaWeb3Forms(formData);
     }
 
     contactForm.addEventListener('submit', async function (e) {
@@ -285,7 +297,8 @@ document.addEventListener('DOMContentLoaded', () => {
           alert(data.message || 'Ошибка при отправке.');
         }
       } catch (err) {
-        alert('Не удалось отправить форму. Проверьте интернет и попробуйте снова.');
+        console.error('Form submit error:', err);
+        alert('Ошибка сети: ' + (err.message || 'проверьте интернет'));
       } finally {
         if (submitBtn) {
           submitBtn.disabled = false;
