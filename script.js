@@ -209,25 +209,71 @@ document.addEventListener('DOMContentLoaded', () => {
   if (successOverlay) successOverlay.addEventListener('click', closeSuccessModal);
 
   if (contactForm) {
-    contactForm.addEventListener('submit', async function (e) {
-      e.preventDefault();
+    const FORM_EMAIL = 'tiktokadswemirs@gmail.com';
 
+    async function submitContactForm(form) {
       const phoneIntlInput = document.getElementById('phoneIntl');
       if (phoneIntlInstance && phoneIntlInput) {
         phoneIntlInput.value = phoneIntlInstance.getNumber();
       }
+
+      const formData = new FormData(form);
+      const isStaticHost =
+        location.hostname.includes('github.io') ||
+        location.hostname.endsWith('.github.dev') ||
+        location.protocol === 'file:';
+
+      // PHP-сервер (OpenServer, хостинг с PHP)
+      if (!isStaticHost) {
+        try {
+          const response = await fetch('send.php', { method: 'POST', body: formData });
+          const data = await response.json();
+          if (data && typeof data.success === 'boolean') {
+            return data;
+          }
+        } catch (e) {
+          /* fallback ниже */
+        }
+      }
+
+      // GitHub Pages и статика — FormSubmit (без PHP)
+      const response = await fetch('https://formsubmit.co/ajax/' + FORM_EMAIL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.get('name'),
+          email: formData.get('email'),
+          phone: formData.get('phone'),
+          phone_intl: formData.get('phone_intl'),
+          _subject: 'Новая заявка с сайта Universal Pack',
+          _template: 'table',
+          _captcha: 'false'
+        })
+      });
+
+      if (response.ok) {
+        return { success: true, message: 'Данные успешно отправлены.' };
+      }
+
+      const data = await response.json().catch(function () { return {}; });
+      return {
+        success: false,
+        message: data.message || 'Ошибка при отправке. Проверьте почту ' + FORM_EMAIL + ' — FormSubmit мог запросить подтверждение.'
+      };
+    }
+
+    contactForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
 
       if (submitBtn) {
         submitBtn.disabled = true;
       }
 
       try {
-        const response = await fetch('send.php', {
-          method: 'POST',
-          body: new FormData(contactForm)
-        });
-
-        const data = await response.json();
+        const data = await submitContactForm(contactForm);
 
         if (data.success) {
           contactForm.reset();
@@ -239,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
           alert(data.message || 'Ошибка при отправке.');
         }
       } catch (err) {
-        alert('Не удалось отправить форму. Убедитесь, что сайт запущен на PHP-сервере.');
+        alert('Не удалось отправить форму. Проверьте интернет и попробуйте снова.');
       } finally {
         if (submitBtn) {
           submitBtn.disabled = false;
