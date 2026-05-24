@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>УНИВЕРСАЛ ПРОДУКТ</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.0/build/css/intlTelInput.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -297,20 +298,18 @@
       <div class="form-wrapper text-center">
         <h2 class="form-title" data-i18n="title-form">Свяжитесь с нами</h2>
         <p class="form-descr" data-i18n="form-desc">Пожалуйста, заполните форму для связи с нашей компанией.</p>
-        <form class="contact-form" action="send.php" method="POST">
+        <form class="contact-form" id="contactForm" action="send.php" method="POST">
           <div class="input-group">
-            <input type="text" name="name" placeholder="Имя" data-i18n="form-name" required>
+            <input type="text" name="name" autocomplete="name" placeholder="Имя" data-i18n="form-name" required>
           </div>
           <div class="input-group">
-            <input type="email" name="email" placeholder="Ваш e-mail" data-i18n="form-email" required>
+            <input type="email" name="email" autocomplete="email" placeholder="Ваш e-mail" data-i18n="form-email" required>
           </div>
-          <div class="input-group input-group-flag">
-            <div class="custom-select" id="countrySelect">
-              <div class="select-selected"><span class="flag">🇺🇸</span><span class="arrow">▼</span></div>
-              <div class="select-items select-hide">
-              </div>
-            </div>
-            <input type="tel" name="phone" id="phoneInput" placeholder="+1 (000) 000-0000" style="padding-left: 80px;" required>
+          <div class="input-group">
+            <input type="tel" name="phone" autocomplete="tel" placeholder="Телефон" data-i18n="form-phone" required>
+          </div>
+          <div class="input-group input-group-intl">
+            <input type="tel" name="phone_intl" id="phoneIntl" autocomplete="tel" required>
           </div>
           <button type="submit" class="submit-btn w-100" data-i18n="form-submit">Отправить</button>
         </form>
@@ -335,8 +334,25 @@
     </div>
   </footer>
 
+  <!-- Success modal (как на universal-pack.ru) -->
+  <div class="form-success-modal" id="formSuccessModal" aria-hidden="true">
+    <div class="form-success-overlay" id="formSuccessOverlay"></div>
+    <div class="form-success-box" role="dialog" aria-modal="true" aria-labelledby="formSuccessTitle">
+      <button type="button" class="form-success-close" id="formSuccessClose" aria-label="Закрыть">&times;</button>
+      <div class="form-success-icon">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <circle cx="20" cy="20" r="20" fill="#22c55e"/>
+          <path d="M12 20.5L17.5 26L28 14.5" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3 class="form-success-title" id="formSuccessTitle" data-i18n="form-success-title">Спасибо!</h3>
+      <p class="form-success-desc" data-i18n="form-success-desc">Данные успешно отправлены.</p>
+      <button type="button" class="form-success-btn" id="formSuccessBtn" data-i18n="form-success-btn">Хорошо</button>
+    </div>
+  </div>
+
   <script src="lang.js"></script>
-  <script src="countries.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.0/build/js/intlTelInput.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

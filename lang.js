@@ -47,7 +47,11 @@ const translations = {
     "form-desc": "Пожалуйста, заполните форму для связи с нашей компанией.",
     "form-name": "Имя",
     "form-email": "Ваш e-mail",
+    "form-phone": "Телефон",
     "form-submit": "Отправить",
+    "form-success-title": "Спасибо!",
+    "form-success-desc": "Данные успешно отправлены.",
+    "form-success-btn": "Хорошо",
     "footer-phone": "Телефон:",
     "footer-email": "Email:"
   },
@@ -99,7 +103,11 @@ const translations = {
     "form-desc": "Please fill out the form to contact our company.",
     "form-name": "Name",
     "form-email": "Your e-mail",
+    "form-phone": "Phone",
     "form-submit": "Send",
+    "form-success-title": "Thank you!",
+    "form-success-desc": "Data successfully sent.",
+    "form-success-btn": "OK",
     "footer-phone": "Phone:",
     "footer-email": "Email:"
   },
@@ -151,7 +159,11 @@ const translations = {
     "form-desc": "Lütfen şirketimizle iletişime geçmek için formu doldurun.",
     "form-name": "İsim",
     "form-email": "E-posta",
+    "form-phone": "Telefon",
     "form-submit": "Gönder",
+    "form-success-title": "Teşekkürler!",
+    "form-success-desc": "Veriler başarıyla gönderildi.",
+    "form-success-btn": "Tamam",
     "footer-phone": "Telefon:",
     "footer-email": "E-posta:"
   }
@@ -163,9 +175,12 @@ document.addEventListener('DOMContentLoaded', () => {
   function setLanguage(lang) {
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
+      if (el.id === 'phoneIntl') return;
       if (translations[lang] && translations[lang][key]) {
         if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
           el.setAttribute('placeholder', translations[lang][key]);
+        } else if (el.tagName === 'BUTTON') {
+          el.textContent = translations[lang][key];
         } else {
           el.innerHTML = translations[lang][key];
         }

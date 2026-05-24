@@ -115,18 +115,20 @@ document.addEventListener('DOMContentLoaded', () => {
   // Product slider logic
   (function () {
     const productSlider = document.querySelector('.product-slider');
-    if (productSlider) {
-      const slides = productSlider.querySelectorAll('.product-slide');
-      const left = productSlider.querySelector('.product-arrow-left');
-      const right = productSlider.querySelector('.product-arrow-right');
-      let current = 0;
+    if (!productSlider) return;
 
-      function showSlide(idx) {
-        slides.forEach((slide, i) => {
-          slide.classList.toggle('active', i === idx);
-        });
-      }
+    const slides = productSlider.querySelectorAll('.product-slide');
+    const left = productSlider.querySelector('.product-arrow-left');
+    const right = productSlider.querySelector('.product-arrow-right');
+    let current = 0;
 
+    function showSlide(idx) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === idx);
+      });
+    }
+
+    if (left && right) {
       left.addEventListener('click', function () {
         current = (current - 1 + slides.length) % slides.length;
         showSlide(current);
@@ -136,14 +138,13 @@ document.addEventListener('DOMContentLoaded', () => {
         showSlide(current);
       });
 
-      // Optional: swipe support for mobile
       let startX = null;
-      productSlider.addEventListener('touchstart', function(e) {
+      productSlider.addEventListener('touchstart', function (e) {
         startX = e.touches[0].clientX;
       });
-      productSlider.addEventListener('touchend', function(e) {
+      productSlider.addEventListener('touchend', function (e) {
         if (startX === null) return;
-        let endX = e.changedTouches[0].clientX;
+        const endX = e.changedTouches[0].clientX;
         if (endX - startX > 50) {
           left.click();
         } else if (startX - endX > 50) {
@@ -154,49 +155,96 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })();
 
-  // Custom Country Select Logic
-  const countrySelect = document.getElementById('countrySelect');
-  if (countrySelect && typeof countriesData !== 'undefined') {
-    const selected = countrySelect.querySelector('.select-selected');
-    const items = countrySelect.querySelector('.select-items');
-    const phoneInput = document.getElementById('phoneInput');
+  // intl-tel-input — флаг, код страны, dropdown (как на universal-pack.ru)
+  let phoneIntlInstance = null;
 
-    // Build items
-    countriesData.forEach(country => {
-      const div = document.createElement('div');
-      div.setAttribute('data-code', country.code);
-      div.setAttribute('data-flag', country.flag);
-      
-      div.innerHTML = `
-        <span class="country-name">${country.name}</span>
-        <span class="country-code">${country.code}</span>
-        <span class="country-flag">${country.flag}</span>
-      `;
-      
-      div.addEventListener('click', function(e) {
-        e.stopPropagation();
-        selected.innerHTML = `<span class="flag">${country.flag}</span><span class="arrow">▼</span>`;
-        phoneInput.value = country.code + ' ';
-        items.classList.add('select-hide');
-        countrySelect.classList.remove('open');
-        phoneInput.focus();
-      });
-      items.appendChild(div);
+  function initPhoneIntl() {
+    const phoneIntlInput = document.getElementById('phoneIntl');
+
+    if (!phoneIntlInput || !window.intlTelInput || phoneIntlInput.closest('.iti')) {
+      return phoneIntlInstance;
+    }
+
+    phoneIntlInstance = window.intlTelInput(phoneIntlInput, {
+      initialCountry: 'ru',
+      separateDialCode: true,
+      preferredCountries: ['ru', 'us', 'de', 'tm', 'kz', 'uz'],
+      nationalMode: false,
+      formatOnDisplay: true,
+      autoPlaceholder: 'aggressive',
+      countrySearch: true,
+      utilsScript: 'https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.0/build/js/utils.js'
     });
 
-    selected.addEventListener('click', function(e) {
-      e.stopPropagation();
-      items.classList.toggle('select-hide');
-      countrySelect.classList.toggle('open');
-      // Scroll to top when opened
-      if (!items.classList.contains('select-hide')) {
-        items.scrollTop = 0;
+    return phoneIntlInstance;
+  }
+
+  initPhoneIntl();
+  window.addEventListener('load', initPhoneIntl);
+
+  // AJAX-отправка формы + модальное окно «Спасибо!»
+  const contactForm = document.getElementById('contactForm');
+  const successModal = document.getElementById('formSuccessModal');
+  const successOverlay = document.getElementById('formSuccessOverlay');
+  const successClose = document.getElementById('formSuccessClose');
+  const successBtn = document.getElementById('formSuccessBtn');
+  const submitBtn = contactForm ? contactForm.querySelector('.submit-btn') : null;
+
+  function openSuccessModal() {
+    if (!successModal) return;
+    successModal.classList.add('is-open');
+    successModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeSuccessModal() {
+    if (!successModal) return;
+    successModal.classList.remove('is-open');
+    successModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  if (successClose) successClose.addEventListener('click', closeSuccessModal);
+  if (successBtn) successBtn.addEventListener('click', closeSuccessModal);
+  if (successOverlay) successOverlay.addEventListener('click', closeSuccessModal);
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const phoneIntlInput = document.getElementById('phoneIntl');
+      if (phoneIntlInstance && phoneIntlInput) {
+        phoneIntlInput.value = phoneIntlInstance.getNumber();
       }
-    });
 
-    document.addEventListener('click', function() {
-      items.classList.add('select-hide');
-      countrySelect.classList.remove('open');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+      }
+
+      try {
+        const response = await fetch('send.php', {
+          method: 'POST',
+          body: new FormData(contactForm)
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          contactForm.reset();
+          if (phoneIntlInstance) {
+            phoneIntlInstance.setCountry('ru');
+          }
+          openSuccessModal();
+        } else {
+          alert(data.message || 'Ошибка при отправке.');
+        }
+      } catch (err) {
+        alert('Не удалось отправить форму. Убедитесь, что сайт запущен на PHP-сервере.');
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+        }
+      }
     });
   }
 });
