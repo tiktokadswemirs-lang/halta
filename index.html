@@ -11,12 +11,31 @@
 
   <!-- Mobile top bar (hamburger) -->
   <div class="mobile-topbar">
-    <button class="hamburger" id="hamburgerBtn" aria-label="Открыть меню">
+    <button class="hamburger" id="hamburgerBtn" aria-label="Открыть меню" data-i18n-aria="nav-open">
       <span></span>
       <span></span>
       <span></span>
     </button>
   </div>
+
+  <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <ul>
+      <li><a href="#about" class="mobile-nav-link" data-i18n="nav-about">О Компании</a></li>
+      <li><a href="#service" class="mobile-nav-link" data-i18n="nav-products">Наши продукты</a></li>
+      <li><a href="#how" class="mobile-nav-link" data-i18n="nav-how">Как мы работаем</a></li>
+      <li><a href="#form" class="mobile-nav-link" data-i18n="nav-contact">Свяжитесь с нами</a></li>
+      <li><a href="#contacts" class="mobile-nav-link" data-i18n="nav-contacts">Контакты</a></li>
+    </ul>
+    <div class="mobile-nav-contacts">
+      <p><strong>+7 903 160 70 01</strong></p>
+      <p>info@universal-pack.ru</p>
+    </div>
+    <div class="mobile-nav-lang lang-switcher">
+      <button class="lang-btn active" data-lang="ru">RU</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="tr">TR</button>
+    </div>
+  </nav>
 
   <!-- Header -->
   <header class="header" id="mainHeader">
@@ -77,7 +96,7 @@
   <!-- Products -->
   <section class="service" id="service">
     <div class="section-container">
-      <h2 class="section-title text-center" style="margin-bottom: 105px;" data-i18n="title-products"><br><br>Наши продукты</h2>
+      <h2 class="section-title text-center section-title-products" data-i18n="title-products"><br><br>Наши продукты</h2>
       
       <div class="products-row">
         <div class="product-item">
@@ -87,7 +106,7 @@
           <div class="product-info">
             <h3 class="product-title" data-i18n="prod-bags">Полипропиленовые мешки</h3>
             <p class="product-descr" data-i18n="prod-bags-desc">Мешки для всех видов сухих сыпучих продуктов</p>
-            <a href="/" class="product-btn">Подробнее</a>
+            <a href="/" class="product-btn" data-i18n="prod-more">Подробнее</a>
           </div>
         </div>
         
@@ -98,7 +117,7 @@
           <div class="product-info">
             <h3 class="product-title" data-i18n="prod-bigbags">Мягкий контейнер (БИГ-БЭГ)</h3>
             <p class="product-descr" data-i18n="prod-bigbags-desc">Мешки для всех видов сухих сыпучих продуктов</p>
-            <a href="/" class="product-btn">Подробнее</a>
+            <a href="/" class="product-btn" data-i18n="prod-more">Подробнее</a>
           </div>
         </div>
         
@@ -109,7 +128,7 @@
           <div class="product-info">
             <h3 class="product-title" data-i18n="prod-threads">Мультифиламентные нити</h3>
             <p class="product-descr" data-i18n="prod-threads-desc">Прошивочные нити</p>
-            <a href="/" class="product-btn">Подробнее</a>
+            <a href="/" class="product-btn" data-i18n="prod-more">Подробнее</a>
           </div>
         </div>
       </div>
@@ -122,7 +141,7 @@
           <div class="product-info">
             <h3 class="product-title" data-i18n="prod-tents">Пологи и Тенты</h3>
             <p class="product-descr" data-i18n="prod-tents-desc">Защитные укрывные материалы из полипропилена</p>
-            <a href="/" class="product-btn">Подробнее</a>
+            <a href="/" class="product-btn" data-i18n="prod-more">Подробнее</a>
           </div>
         </div>
         
@@ -133,7 +152,7 @@
           <div class="product-info">
             <h3 class="product-title" data-i18n="prod-span">Нетканый материал (Спанбонд)</h3>
             <p class="product-descr" data-i18n="prod-span-desc">Нетканый материал для медицинских, Агро промышленных и упаковочных целей</p>
-            <a href="/" class="product-btn">Подробнее</a>
+            <a href="/" class="product-btn" data-i18n="prod-more">Подробнее</a>
           </div>
         </div>
         
@@ -144,7 +163,7 @@
           <div class="product-info">
             <h3 class="product-title" data-i18n="prod-film">Полиэтиленовая пленка</h3>
             <p class="product-descr" data-i18n="prod-film-desc">Для Сельскохозяйственных, Строительных, Бытовых, Промышленных целей</p>
-            <a href="/" class="product-btn">Подробнее</a>
+            <a href="/" class="product-btn" data-i18n="prod-more">Подробнее</a>
           </div>
         </div>
       </div>
@@ -165,7 +184,7 @@
           <div class="product-info">
             <h3 class="product-title" data-i18n="prod-polybag">Вкладыши Полиэтиленовые для мешков и Биг-Бэгов</h3>
             <p class="product-descr product-descr-small" data-i18n="prod-polybag-desc">Полиэтиленовые вкладыши для различных видов мешков и биг-бэгов. Защищают содержимое от влаги и загрязнений.</p>
-            <a href="/" class="product-btn">Подробнее</a>
+            <a href="/" class="product-btn" data-i18n="prod-more">Подробнее</a>
           </div>
         </div>
       </div>
@@ -338,7 +357,7 @@
   <div class="form-success-modal" id="formSuccessModal" aria-hidden="true">
     <div class="form-success-overlay" id="formSuccessOverlay"></div>
     <div class="form-success-box" role="dialog" aria-modal="true" aria-labelledby="formSuccessTitle">
-      <button type="button" class="form-success-close" id="formSuccessClose" aria-label="Закрыть">&times;</button>
+      <button type="button" class="form-success-close" id="formSuccessClose" aria-label="Закрыть" data-i18n-aria="modal-close">&times;</button>
       <div class="form-success-icon">
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
           <circle cx="20" cy="20" r="20" fill="#22c55e"/>
@@ -347,6 +366,7 @@
       </div>
       <h3 class="form-success-title" id="formSuccessTitle" data-i18n="form-success-title">Спасибо!</h3>
       <p class="form-success-desc" data-i18n="form-success-desc">Данные успешно отправлены.</p>
+      <p class="form-success-note" data-i18n="form-success-note">Наша компания свяжется с вами в кратчайшие сроки.</p>
       <button type="button" class="form-success-btn" id="formSuccessBtn" data-i18n="form-success-btn">Хорошо</button>
     </div>
   </div>

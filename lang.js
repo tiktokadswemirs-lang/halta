@@ -51,9 +51,13 @@ const translations = {
     "form-submit": "Отправить",
     "form-success-title": "Спасибо!",
     "form-success-desc": "Данные успешно отправлены.",
+    "form-success-note": "Наша компания свяжется с вами в кратчайшие сроки.",
     "form-success-btn": "Хорошо",
     "footer-phone": "Телефон:",
-    "footer-email": "Email:"
+    "footer-email": "Email:",
+    "prod-more": "Подробнее",
+    "modal-close": "Закрыть",
+    "nav-open": "Открыть меню"
   },
   en: {
     "nav-about": "About Us",
@@ -107,9 +111,13 @@ const translations = {
     "form-submit": "Send",
     "form-success-title": "Thank you!",
     "form-success-desc": "Data successfully sent.",
+    "form-success-note": "Our company will contact you as soon as possible.",
     "form-success-btn": "OK",
     "footer-phone": "Phone:",
-    "footer-email": "Email:"
+    "footer-email": "Email:",
+    "prod-more": "Learn more",
+    "modal-close": "Close",
+    "nav-open": "Open menu"
   },
   tr: {
     "nav-about": "Hakkımızda",
@@ -163,9 +171,13 @@ const translations = {
     "form-submit": "Gönder",
     "form-success-title": "Teşekkürler!",
     "form-success-desc": "Veriler başarıyla gönderildi.",
+    "form-success-note": "Şirketimiz en kısa sürede sizinle iletişime geçecektir.",
     "form-success-btn": "Tamam",
     "footer-phone": "Telefon:",
-    "footer-email": "E-posta:"
+    "footer-email": "E-posta:",
+    "prod-more": "Daha fazla",
+    "modal-close": "Kapat",
+    "nav-open": "Menüyü aç"
   }
 };
 
@@ -187,9 +199,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Translate all "Подробнее" buttons which don't have unique keys
-    document.querySelectorAll('.product-btn').forEach(btn => {
-      btn.textContent = lang === 'ru' ? 'Подробнее' : (lang === 'en' ? 'Learn more' : 'Daha fazla');
+    document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+      const key = el.getAttribute('data-i18n-aria');
+      if (translations[lang] && translations[lang][key]) {
+        el.setAttribute('aria-label', translations[lang][key]);
+      }
     });
     
     // update buttons

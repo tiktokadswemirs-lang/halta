@@ -6,8 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (hamburgerBtn && mobileNav) {
     hamburgerBtn.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('open');
       hamburgerBtn.classList.toggle('open');
-      mobileNav.classList.toggle('open');
+      mobileNav.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
     });
 
     // Close mobile menu when any nav link is clicked
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
       link.addEventListener('click', () => {
         hamburgerBtn.classList.remove('open');
         mobileNav.classList.remove('open');
+        mobileNav.setAttribute('aria-hidden', 'true');
       });
     });
   }
